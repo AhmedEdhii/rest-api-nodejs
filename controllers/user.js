@@ -4,7 +4,6 @@ var jwt = require('jsonwebtoken')
 var expressJwt = require('express-jwt')
 
 
-
 exports.signup = (req, res) => {
     const errors = validationResult(req)
 
@@ -21,7 +20,7 @@ exports.signup = (req, res) => {
             })        
         }
         return res.json({
-            message: "Success",
+            message: "Sign up Successful",
             newuser
         })
     })
@@ -53,6 +52,7 @@ exports.signin = (req,res) => {
         //send response
         const {_id, name, email} = current_user
         return res.json({
+            message: "Signed in Successfully",
             token,
             user: {
                 _id,
@@ -63,7 +63,7 @@ exports.signin = (req,res) => {
     })
 }
 
-exports.getprofile=(req,res)=>{
+exports.viewProfile=(req,res)=>{
     const {_id} = req.user
     User.findOne({_id}, (err, current_user) => {
         const {_id, name, phonenumber, email} = current_user

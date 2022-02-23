@@ -1,5 +1,5 @@
 const express = require("express")
-const { signup, signin, signout, getprofile } = require("../controllers/user")
+const { signup, signin, signout, viewProfile } = require("../controllers/user")
 const auth = require("../middlewares/authentication");
 const {check} = require('express-validator')
 const router = express.Router()
@@ -12,7 +12,7 @@ router.post('/signup', [
 
 router.post('/signin', signin)
 
-router.get('/profile', auth, getprofile)
+router.get('/profile', auth, viewProfile)
 
 router.get('/signout', signout)
 
