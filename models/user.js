@@ -9,11 +9,6 @@ const userSchema =  new mongoose.Schema({
         maxlength: 32,
         trim: true
     },
-    lastname:{
-        type: String,
-        maxlength: 32,
-        trim: true
-    },
     email:{
         type: String,
         required: true,
@@ -26,6 +21,10 @@ const userSchema =  new mongoose.Schema({
         maxlength: 11,
         trim: true
     },
+    role: {
+        type: String,
+        enum: ["student", "teacher", "admin"]
+      },
     encrypted_password:{
         type: String,
         required: true
